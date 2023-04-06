@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block contenido_variable %}
+
+<p>Nombre de usuario: {{ profile.user }}</p>
+<p>Identificacion: {{ profile.imagen }}</p>
+<p>Email: {{ profile.link }}</p>
+<p>Descripcion: {{profile.descripcion}}</p>
+<button><a href="{% url 'EditarPerfil' %}">Editar</a></button>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block contenido_variable %}
+<p><b>Nombre:</b>{{nombre}}</p>
+<p><b>Detalle:</b>{{detalle}}</p>
+<p><b>Descripcion:</b>{{descripcion}}</p>
+<p><b>Autor:</b>{{usuario}}</p>
+<button><a href="{% url 'AgregarComentario' nombre %}">Agregar</a></button>
+
+
+{% endblock %}

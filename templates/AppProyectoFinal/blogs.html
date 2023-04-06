@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block contenido_variable %}
+
+
+{% if filtro %}
+{% for f in filtro %}
+<h3>Vibraciones</h3>
+<p><b>Vibraciones  del tipo: </b>{{f.nombre}}</p>
+<p><b>Detalle: </b>{{f.detalle}}</p>
+{% if user.is_authenticated %}
+<button><a href="{% url 'CrearBlog' %}">Crear nuevo blog</a></button>
+<button><a href="{% url 'EliminarBlog' f.nombre %}">Eliminar</a></button>
+<button><a href="{% url 'EditarBlog' f.nombre %}">Editar</a></button>
+<button><a href="{% url 'ver_mas' f.nombre %}">Ver mas</a></button>
+{% else %}
+<p>Debe iniciar sesion para poder acceder de forma completa a los blogs </p>
+{% endif %}
+{% endfor %}
+{% else %}
+<h4>No hay informacion</h4>
+{% endif %}
+
+
+{% endblock %}

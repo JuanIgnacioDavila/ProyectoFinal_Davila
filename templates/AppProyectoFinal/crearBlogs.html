@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block contenido_variable %}
+
+<form action="{% url 'CrearBlog' %}" method="post">
+    {% csrf_token %}
+    <h2>Registro blog: </h2>
+    {{blogsform.as_p}}
+      
+    <input type="submit" value="Agregar blog">
+</form>
+<br><hr>
+
+
+
+
+{% endblock %}
