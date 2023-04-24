@@ -1,10 +1,30 @@
 {% extends "base.html" %}
+{% load static %}
 {% block contenido_variable %}
-<p><b>Nombre:</b>{{nombre}}</p>
-<p><b>Detalle:</b>{{detalle}}</p>
-<p><b>Descripcion:</b>{{descripcion}}</p>
-<p><b>Autor:</b>{{usuario}}</p>
-<button><a href="{% url 'AgregarComentario' nombre %}">Agregar</a></button>
+
+<p><b>Nombre:</b>{{blog.nombre}}</p>
+<p><b>Detalle:</b>{{blog.detalle}}</p>
+<p><b>Descripcion:</b>{{blog.descripcion}}</p>
+<p><b>Autor:</b>{{blog.usuario.username}}</p>
+<p><b>Fecha:</b>{{blog.fecha}}</p>
+<p>{{blog.imagen}}</p>
+
+{% if comentarios %}
+{% for f in comentarios %}
+<li><b>{{f.usuario.username}}</b> comento {{f.comentario}}, a {{f.fecha}}</li>
+
+
+
+{% endfor %}
+{% else %}
+<p><b>No tienes comentarios</b></p>
+{% endif %}
+
+<form  method="post">
+    {% csrf_token %}
+    {{comentariosform.as_p}}
+    <input type="submit" value="Enviar">
+</form>
 
 
 {% endblock %}

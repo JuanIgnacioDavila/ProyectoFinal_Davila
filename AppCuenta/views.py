@@ -1,9 +1,10 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login,logout,authenticate
+from django.contrib.auth import login,authenticate
 from AppCuenta.forms import *
 from AppCuenta.models import *
 from django.contrib.auth.decorators import login_required
+from AppProyectoFinal.models import ComentariosModel
 
 def register_account(request):
     if request.method=="POST":
@@ -48,6 +49,7 @@ def login_account(request):
 def leer_perfil(request):
     """Me trae el perfil recien logueado,por lo tanto,filtro sin necesidad de colocar nombre,y solo ver los datos y tiene acceso al mismo el usuario que ha iniciado"""
     user = request.user
+    
     profile = Avatar.objects.filter(user=user).first() 
     return render(request, 'cuenta/profile.html', {'profile': profile})
 
@@ -83,4 +85,12 @@ def editar_perfil(request):
         }
     return render(request,"cuenta/edit_profile.html",context)
 
-    
+#def mensajes(request):
+    user=request.user
+    mensajes=ComentariosModel.objects.filter(user=ComentariosModel.usuario)
+    context={
+        "mensajes":mensajes,
+    }
+    return render(request,"AppCuenta/mensajes.html",context)
+
+      

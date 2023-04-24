@@ -4,7 +4,15 @@ from AppProyectoFinal.models import *
 class BlogsForm(forms.ModelForm):
     class Meta:
         model=BlogsModel
-        fields="__all__"
+        fields=("nombre","detalle","descripcion","imagen")
 
 class BuscarBlogsForm(forms.Form):
     nombre=forms.CharField()
+
+class ComentariosForm(forms.ModelForm):
+    class Meta:
+        model=ComentariosModel
+        fields=("comentario",)
+
+class BuscarComentariosForm(forms.Form):
+    usuario=forms.CharField()

@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 {% block contenido_variable %}
-<form action="{% url 'EditarBlog' nombre %}" method="post">
+<form method="post">
     {% csrf_token %}
-    <h2>Registro blog: </h2>
+    <h2>Editar blog: </h2>
     {{form.as_p}}
       
     <input type="submit" value="Editar blog">

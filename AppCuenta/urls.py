@@ -8,5 +8,6 @@ urlpatterns = [
     path('cuenta_registro/',register_account,name='RegistroCuenta'),
     path('logout/',LogoutView.as_view(template_name="cuenta/logout.html"),name='accountLogout'),
     path('profile/',leer_perfil,name='LeerPerfil'),  
-    path('edit_profile/',editar_perfil,name='EditarPerfil')     
+    path('edit_profile/',editar_perfil,name='EditarPerfil'),
+    #path('vermensajes/',mensajes,name='VerMensajes')     
 ]

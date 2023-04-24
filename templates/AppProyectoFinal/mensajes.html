@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido_variable %}
+<h3> Comentarios sobre tu publicacion </h3>
+{% if comentarios %}
+
+{% for f in comentarios %}
+<li><b>{{f.usuario.username}}</b> comento {{f.comentario}}, a {{f.fecha}}</li>
+
+{% endfor %}
+{% else %}
+<p><b>No tienes comentarios</b></p>
+{% endif %}
+
+{% endblock %}
