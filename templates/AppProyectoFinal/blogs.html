@@ -3,18 +3,26 @@
 {% block contenido_variable %}
 <button><a href="{% url 'CrearBlog' %}">Crear nuevo blog</a></button>
 <br><hr>
+
 <h3>Vibraciones</h3>
 {% if filtro %}
+
 {% for f in filtro %}
+
 
 <p><b>Vibraciones  del tipo: </b>{{f.nombre}}</p>
 <p><b>Detalle: </b>{{f.detalle}}</p>
 {% if user.is_authenticated %}
 
-
-<button><a href="{% url 'EliminarBlog' f.id %}">Eliminar</a></button>
+{% if user == f.usuario %}
 <button><a href="{% url 'EditarBlog' f.id %}">Editar</a></button>
+<button><a href="{% url 'EliminarBlog' f.id %}">Eliminar</a></button>
 <button><a href="{% url 'VerMas' f.id %}">Ver mas</a></button>
+
+{% else %}
+<button><a href="{% url 'VerMas' f.id %}">Ver mas</a></button>
+<br><hr>
+{% endif %}
 
 {% else %}
 <p>Debe iniciar sesion para poder acceder de forma completa a los blogs </p>
